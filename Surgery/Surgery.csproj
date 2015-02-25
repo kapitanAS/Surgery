@@ -47,7 +47,6 @@
     <Compile Include="AnimalCreator.cs" />
     <Compile Include="AnimalType.cs" />
     <Compile Include="IAnimal.cs" />
-    <Compile Include="Name.cs" />
     <Compile Include="PetOwner.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
