@@ -18,19 +18,20 @@ namespace Surgery
             if (animal == null) break;
             if (animal.IsCheckDue())
             {
-                  ProcessAnimal(animal);
+                  PrintNotificationLetter(animal);
             }
          }
       }
 
-      public void ProcessAnimal(Animal animal)
+      public void PrintNotificationLetter(Animal animal)
       {
-         _printDoc.PrintPage += (obj, e) =>
-            {
-               e.Graphics.DrawString(animal.Name, new Font(FontFamily.GenericSerif, 12, FontStyle.Bold), Brushes.Black, PointF.Empty);
-               e.HasMorePages = false;
-            };
-         _printDoc.Print();
+         //_printDoc.PrintPage += (obj, e) =>
+         //   {
+         //      e.Graphics.DrawString(animal.Name, new Font(FontFamily.GenericSerif, 12, FontStyle.Bold), Brushes.Black, PointF.Empty);
+         //      e.HasMorePages = false;
+         //   };
+         //_printDoc.Print();
+          Console.WriteLine(animal);
       }
       
       private IList<Animal> _animals = new List<Animal>(); //List or IList?
@@ -38,6 +39,12 @@ namespace Surgery
       {
          get { return _animals; }
          set { _animals = value; }
+      }
+
+       public void AddAnimal(AnimalOwner owner, AnimalType type, DateTime? lastCheckup, string name=null)
+      {
+          Animal newAnimal = AnimalCreator.Create(owner, type, (lastCheckup.HasValue?(DateTime)lastCheckup:DateTime.Now),name);
+          _animals.Add(newAnimal);
       }
    }
 }

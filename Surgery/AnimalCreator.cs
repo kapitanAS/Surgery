@@ -8,9 +8,9 @@ namespace Surgery
 {
     class AnimalCreator
     {
-        public static Animal Create(AnimalType type, DateTime lastCheckup, string name = null)
+        public static Animal Create(AnimalOwner owner, AnimalType type, DateTime lastCheckup, string name = null)
         {
-           Animal animal = new Animal(type) {LastCheckup = lastCheckup, Name = name};
+            Animal animal = new Animal(type) { Owner = owner, LastCheckup = lastCheckup, Name = name };
            
             switch (type)
             {

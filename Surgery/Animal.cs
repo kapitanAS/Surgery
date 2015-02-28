@@ -15,6 +15,7 @@ namespace Surgery
       public int CheckupFrequencyMonths { get; set; }
 
       public string Name { get; set; }
+      public AnimalOwner Owner{get;set;}
       public readonly AnimalType AnimalType;
       private  DateTime _lastCheckup;
 
@@ -26,6 +27,11 @@ namespace Surgery
       public bool IsCheckDue()
       {
          return (DateTime.Now - _lastCheckup).TotalDays/30.3 >= CheckupFrequencyMonths;
+      }
+
+       public override string ToString()
+      {
+          return string.Format("Type:{0}, Name:{1}, LastCheckup:{2}, Owner:{3}", AnimalType, Name, _lastCheckup, Owner.OwnerName);
       }
    }
 }
